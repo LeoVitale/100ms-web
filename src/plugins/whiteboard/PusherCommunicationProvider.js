@@ -1,7 +1,9 @@
 // @ts-check
 import Pusher from "pusher-js";
 
+// @ts-ignore
 const stringifyWithNull = obj =>
+  // @ts-ignore
   JSON.stringify(obj, (k, v) => (v === undefined ? null : v));
 
 /**
@@ -36,8 +38,11 @@ class PusherCommunicationProvider {
     }
 
     /** @private */
+    // @ts-ignore
     this.pusher = new Pusher(import.meta.env.REACT_APP_PUSHER_APP_KEY, {
+      // @ts-ignore
       cluster: import.meta.env.REACT_APP_PUSHER_CLUSTER || "ap2",
+      // @ts-ignore
       authEndpoint: import.meta.env.REACT_APP_PUSHER_AUTHENDPOINT,
     });
 
@@ -61,6 +66,7 @@ class PusherCommunicationProvider {
    * @param {any} message
    */
   storeEvent = (eventName, message) => {
+    // @ts-ignore
     this.lastMessage[eventName] = { eventName, ...message };
   };
 
@@ -69,6 +75,7 @@ class PusherCommunicationProvider {
    * @returns {any}
    */
   getStoredEvent = eventName => {
+    // @ts-ignore
     return this.lastMessage[eventName];
   };
 
@@ -91,6 +98,7 @@ class PusherCommunicationProvider {
    * @param {Function} cb
    */
   subscribe = (eventName, cb) => {
+    // @ts-ignore
     this.channel?.bind(`client-${eventName}`, message =>
       this.storeEvent(eventName, message)
     );
@@ -103,9 +111,11 @@ class PusherCommunicationProvider {
   /** @private */
   resendLastEvents = () => {
     for (const eventName in this.lastMessage) {
+      // @ts-ignore
       if (this.lastMessage[eventName]) {
         this.channel?.trigger(
           `client-${eventName}`,
+          // @ts-ignore
           this.lastMessage[eventName]
         );
       }

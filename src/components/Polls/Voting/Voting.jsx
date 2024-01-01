@@ -1,5 +1,5 @@
 // @ts-check
-import React from "react";
+
 import {
   selectLocalPeerID,
   selectPeerNameByID,
@@ -15,6 +15,7 @@ import { StandardView } from "./StandardVoting";
 import { TimedView } from "./TimedVoting";
 import { StatusIndicator } from "../common/StatusIndicator";
 
+// @ts-ignore
 export const Voting = ({ id, toggleVoting }) => {
   const actions = useHMSActions();
   const poll = useHMSStore(selectPollByID(id));

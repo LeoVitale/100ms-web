@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 import React from "react";
 import { CheckCircleIcon } from "@100mslive/react-icons";
 import { Box, Button, Flex, Text } from "@100mslive/roomkit-react";

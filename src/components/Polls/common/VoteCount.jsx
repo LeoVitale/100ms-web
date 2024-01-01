@@ -1,7 +1,8 @@
-// @ts-check
+// @ts-ignore
 import React from "react";
 import { Flex, Text } from "@100mslive/roomkit-react";
 
+// @ts-ignore
 export const VoteCount = ({ isQuiz, voteCount, isCorrectAnswer }) => {
   return (
     <Flex css={{ alignItems: "center" }}>

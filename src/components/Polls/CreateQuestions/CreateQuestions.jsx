@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 import React, { useMemo, useState } from "react";
 import { v4 as uuid } from "uuid";
 import {

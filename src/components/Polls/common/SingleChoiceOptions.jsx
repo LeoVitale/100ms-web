@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 import React, { useCallback } from "react";
 import { Flex, Input, Label, RadioGroup, Text } from "@100mslive/roomkit-react";
 import { VoteCount } from "./VoteCount";

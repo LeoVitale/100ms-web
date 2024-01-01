@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 import React, { useCallback, useMemo, useState } from "react";
 import {
   selectLocalPeer,

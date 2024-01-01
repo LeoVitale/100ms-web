@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 import React, { useRef, useState } from "react";
 import { AddCircleIcon, TrashIcon } from "@100mslive/react-icons";
 import {

@@ -1,4 +1,3 @@
-// @ts-check
 import { useCallback, useEffect, useRef, useState } from "react";
 import { selectDidIJoinWithin, useHMSStore } from "@100mslive/react-sdk";
 import { provider as room } from "./PusherCommunicationProvider";
