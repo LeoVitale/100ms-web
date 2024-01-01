@@ -3,15 +3,15 @@ import { selectRoomID, useHMSStore } from "@100mslive/react-sdk";
 
 export class FeatureFlags {
   static enableTranscription =
-    process.env.REACT_APP_ENABLE_TRANSCRIPTION === "true";
+    import.meta.env.REACT_APP_ENABLE_TRANSCRIPTION === "true";
   static enableStatsForNerds =
-    process.env.REACT_APP_ENABLE_STATS_FOR_NERDS === "true";
+    import.meta.env.REACT_APP_ENABLE_STATS_FOR_NERDS === "true";
   static enableWhiteboard =
-    process.env.REACT_APP_ENABLE_WHITEBOARD &&
-    process.env.REACT_APP_PUSHER_APP_KEY &&
-    process.env.REACT_APP_PUSHER_AUTHENDPOINT;
+    import.meta.env.REACT_APP_ENABLE_WHITEBOARD &&
+    import.meta.env.REACT_APP_PUSHER_APP_KEY &&
+    import.meta.env.REACT_APP_PUSHER_AUTHENDPOINT;
   static enableBeamSpeakersLogging =
-    process.env.REACT_APP_ENABLE_BEAM_SPEAKERS_LOGGING === "true";
+    import.meta.env.REACT_APP_ENABLE_BEAM_SPEAKERS_LOGGING === "true";
 
   static init(roomId) {
     if (!window.HMS) {
@@ -23,7 +23,7 @@ export class FeatureFlags {
     window.HMS.ALWAYS_REQUEST_PERMISSIONS = false;
 
     this.enableTranscription =
-      process.env.REACT_APP_TRANSCRIPTION_ROOM_ID === roomId;
+      import.meta.env.REACT_APP_TRANSCRIPTION_ROOM_ID === roomId;
   }
 
   static optimiseHLSLatency() {

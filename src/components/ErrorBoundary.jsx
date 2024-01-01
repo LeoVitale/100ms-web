@@ -9,6 +9,8 @@ import {
   ThemeContext,
   Tooltip,
 } from "@100mslive/roomkit-react";
+import bgDark from "../images/error-bg-dark.svg";
+import bgLight from "../images/error-bg-light.svg";
 import { ErrorWithSupportLink } from "./PreviewScreen";
 
 export class ErrorBoundary extends Component {
@@ -53,11 +55,7 @@ export class ErrorBoundary extends Component {
                 const { themeType } = value;
                 return (
                   <img
-                    src={
-                      themeType === "dark"
-                        ? require("../images/error-bg-dark.svg")
-                        : require("../images/error-bg-light.svg")
-                    }
+                    src={themeType === "dark" ? bgDark : bgLight}
                     alt="error background"
                   />
                 );

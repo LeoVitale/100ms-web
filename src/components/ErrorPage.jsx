@@ -1,5 +1,7 @@
 import React from "react";
 import { Box, Flex, Text, useTheme } from "@100mslive/roomkit-react";
+import bgDark from "../images/error-bg-dark.svg";
+import bgLight from "../images/error-bg-light.svg";
 import { CREATE_ROOM_DOC_URL } from "../common/constants";
 
 function ErrorPage({ error }) {
@@ -16,11 +18,7 @@ function ErrorPage({ error }) {
     >
       <Box css={{ position: "relative", overflow: "hidden", r: "$3" }}>
         <img
-          src={
-            themeType === "dark"
-              ? require("../images/error-bg-dark.svg")
-              : require("../images/error-bg-light.svg")
-          }
+          src={themeType === "dark" ? bgDark : bgLight}
           alt="Error Background"
         />
         {window.location.hostname === "localhost" ? (

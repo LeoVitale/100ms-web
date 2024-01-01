@@ -1,9 +1,9 @@
 import React, { Suspense, useEffect } from "react";
 import {
-  BrowserRouter as Router,
   Navigate,
   Route,
   Routes,
+  useNavigate,
   useParams,
 } from "react-router-dom";
 import {
@@ -33,8 +33,11 @@ import { FeatureFlags } from "./services/FeatureFlags";
 const Conference = React.lazy(() => import("./components/conference"));
 const PreviewScreen = React.lazy(() => import("./components/PreviewScreen"));
 
-const defaultTokenEndpoint = process.env.REACT_APP_TOKEN_GENERATION_ENDPOINT;
-const envPolicyConfig = JSON.parse(process.env.REACT_APP_POLICY_CONFIG || "{}");
+const defaultTokenEndpoint = import.meta.env
+  .REACT_APP_TOKEN_GENERATION_ENDPOINT;
+const envPolicyConfig = JSON.parse(
+  import.meta.env.REACT_APP_POLICY_CONFIG || "{}"
+);
 
 let appName;
 if (window.location.host.includes("localhost")) {
@@ -44,13 +47,13 @@ if (window.location.host.includes("localhost")) {
 }
 
 document.title =
-  process.env.REACT_APP_TITLE || `${appName}'s ${document.title}`;
+  import.meta.env.REACT_APP_TITLE || `${appName}'s ${document.title}`;
 
 // TODO: remove now that there are options to change to portrait
 const getAspectRatio = ({ width, height }) => {
-  const host = process.env.REACT_APP_HOST_NAME || window.location.hostname;
+  const host = import.meta.env.REACT_APP_HOST_NAME || window.location.hostname;
   const portraitDomains = (
-    process.env.REACT_APP_PORTRAIT_MODE_DOMAINS || ""
+    import.meta.env.REACT_APP_PORTRAIT_MODE_DOMAINS || ""
   ).split(",");
   if (portraitDomains.includes(host) && width > height) {
     return { width: height, height: width };
@@ -228,8 +231,9 @@ const BackSwipe = () => {
 };
 
 function AppRoutes({ getDetails, authTokenByRoomCodeEndpoint }) {
+  const navigate = useNavigate();
   return (
-    <Router>
+    <>
       <ToastContainer />
       <Notifications />
       <BackSwipe />
@@ -258,7 +262,7 @@ function AppRoutes({ getDetails, authTokenByRoomCodeEndpoint }) {
           }
         />
       </Routes>
-    </Router>
+    </>
   );
 }
 
@@ -266,13 +270,13 @@ export default function App() {
   return (
     <EdtechComponent
       themeConfig={{
-        aspectRatio: process.env.REACT_APP_TILE_SHAPE,
-        theme: process.env.REACT_APP_THEME,
-        color: process.env.REACT_APP_COLOR,
-        logo: process.env.REACT_APP_LOGO,
-        font: process.env.REACT_APP_FONT,
-        headerPresent: process.env.REACT_APP_HEADER_PRESENT,
-        metadata: process.env.REACT_APP_DEFAULT_APP_DETAILS, // A stringified object in env
+        aspectRatio: import.meta.env.REACT_APP_TILE_SHAPE,
+        theme: import.meta.env.REACT_APP_THEME,
+        color: import.meta.env.REACT_APP_COLOR,
+        logo: import.meta.env.REACT_APP_LOGO,
+        font: import.meta.env.REACT_APP_FONT,
+        headerPresent: import.meta.env.REACT_APP_HEADER_PRESENT,
+        metadata: import.meta.env.REACT_APP_DEFAULT_APP_DETAILS, // A stringified object in env
       }}
     />
   );

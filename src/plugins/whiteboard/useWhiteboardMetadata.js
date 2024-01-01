@@ -25,7 +25,7 @@ export const useWhiteboardMetadata = () => {
    * @param enabled {boolean}
    */
   const toggleWhiteboard = useCallback(async () => {
-    if (!process.env.REACT_APP_PUSHER_APP_KEY) {
+    if (!import.meta.env.REACT_APP_PUSHER_APP_KEY) {
       console.error("Cannot start whiteboard - Pusher Key unavailable");
     }
     try {

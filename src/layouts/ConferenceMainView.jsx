@@ -59,10 +59,10 @@ export const ConferenceMainView = () => {
       return;
     }
     const audioPlaylist = JSON.parse(
-      process.env.REACT_APP_AUDIO_PLAYLIST || "[]"
+      import.meta.env.REACT_APP_AUDIO_PLAYLIST || "[]"
     );
     const videoPlaylist = JSON.parse(
-      process.env.REACT_APP_VIDEO_PLAYLIST || "[]"
+      import.meta.env.REACT_APP_VIDEO_PLAYLIST || "[]"
     );
     if (videoPlaylist.length > 0) {
       hmsActions.videoPlaylist.setList(videoPlaylist);

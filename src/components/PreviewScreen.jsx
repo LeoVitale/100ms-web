@@ -30,7 +30,7 @@ import {
  * ui_mode=activespeaker => lands in active speaker mode after joining the room
  */
 
-const env = process.env.REACT_APP_ENV;
+const env = import.meta.env.REACT_APP_ENV;
 const PreviewScreen = React.memo(({ authTokenByRoomCodeEndpoint }) => {
   const navigate = useNavigation();
   const hmsActions = useHMSActions();
@@ -44,7 +44,7 @@ const PreviewScreen = React.memo(({ authTokenByRoomCodeEndpoint }) => {
   let skipPreview = useSearchParam(QUERY_PARAM_SKIP_PREVIEW) === "true";
   // use this field to join directly for quick testing while in local
   const directJoinHeadfulFromEnv =
-    process.env.REACT_APP_HEADLESS_JOIN === "true";
+    import.meta.env.REACT_APP_HEADLESS_JOIN === "true";
   const directJoinHeadful =
     useSearchParam(QUERY_PARAM_SKIP_PREVIEW_HEADFUL) === "true" ||
     directJoinHeadfulFromEnv;
@@ -89,9 +89,9 @@ const PreviewScreen = React.memo(({ authTokenByRoomCodeEndpoint }) => {
 
   const onJoin = () => {
     !directJoinHeadful && setIsHeadless(skipPreview);
-    let meetingURL = `/meeting/${urlRoomId}`;
+    let meetingURL = `/call/meeting/${urlRoomId}`;
     if (userRole) {
-      meetingURL += `/${userRole}`;
+      meetingURL += `/call/${userRole}`;
     }
     navigate(meetingURL);
   };
@@ -113,16 +113,14 @@ const PreviewScreen = React.memo(({ authTokenByRoomCodeEndpoint }) => {
         align="center"
       >
         {token ? (
-          <>
-            <PreviewContainer
-              initialName={initialName}
-              skipPreview={skipPreview}
-              env={env}
-              onJoin={onJoin}
-              token={token}
-              asRole={previewAsRole}
-            />
-          </>
+          <PreviewContainer
+            initialName={initialName}
+            skipPreview={skipPreview}
+            env={env}
+            onJoin={onJoin}
+            token={token}
+            asRole={previewAsRole}
+          />
         ) : (
           <Loading size={100} />
         )}

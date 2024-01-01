@@ -15,7 +15,7 @@ const notificationTypes = [
 ];
 let notificationId = null;
 
-const isQA = process.env.REACT_APP_ENV === "qa";
+const isQA = import.meta.env.REACT_APP_ENV === "qa";
 export const ReconnectNotifications = () => {
   const notification = useHMSNotifications(notificationTypes);
   const [open, setOpen] = useState(false);

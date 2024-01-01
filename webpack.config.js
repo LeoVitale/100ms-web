@@ -9,7 +9,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 // const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 require("dotenv").config();
 
-const isProduction = process.env.NODE_ENV === "production";
+const isProduction = import.meta.env.NODE_ENV === "production";
 
 module.exports = {
   mode: isProduction ? "production" : "development",
@@ -80,7 +80,7 @@ module.exports = {
   optimization: {
     splitChunks: {},
     runtimeChunk: false,
-    minimize: process.env.NODE_ENV === "production",
+    minimize: import.meta.env.NODE_ENV === "production",
     minimizer: [
       new TerserPlugin({
         minify: TerserPlugin.esbuildMinify,
@@ -141,10 +141,10 @@ module.exports = {
     new webpack.ProvidePlugin({
       React: "react",
     }),
-    // This handle env variables and provides them as process.env globally
+    // This handle env variables and provides them as import.meta.env globally
     // webpack5 doesn't support process, hence this is needed.
     new webpack.DefinePlugin({
-      "process.env": JSON.stringify(process.env),
+      "import.meta.env": JSON.stringify(import.meta.env),
     }),
   ],
   devServer: {
@@ -153,7 +153,7 @@ module.exports = {
     open: true,
     compress: true,
     hot: true,
-    port: process.env.PORT || 3000,
+    port: import.meta.env.PORT || 3000,
     allowedHosts: "all",
   },
 };

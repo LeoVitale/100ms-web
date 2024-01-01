@@ -12,7 +12,9 @@ const MAX_TILES_FOR_MOBILE = 4;
 /**
  * the below variables are for showing webinar etc. related image if required on certain meeting urls
  */
-const webinarProps = JSON.parse(process.env.REACT_APP_WEBINAR_PROPS || "{}");
+const webinarProps = JSON.parse(
+  import.meta.env.REACT_APP_WEBINAR_PROPS || "{}"
+);
 const eventRoomIDs = webinarProps?.ROOM_IDS || [];
 const eventsImg = webinarProps?.IMAGE_FILE || ""; // the image to show in center
 // the link to navigate to when user clicks on the image

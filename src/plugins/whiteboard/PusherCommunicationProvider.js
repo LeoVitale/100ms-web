@@ -36,9 +36,9 @@ class PusherCommunicationProvider {
     }
 
     /** @private */
-    this.pusher = new Pusher(process.env.REACT_APP_PUSHER_APP_KEY, {
-      cluster: process.env.REACT_APP_PUSHER_CLUSTER || "ap2",
-      authEndpoint: process.env.REACT_APP_PUSHER_AUTHENDPOINT,
+    this.pusher = new Pusher(import.meta.env.REACT_APP_PUSHER_APP_KEY, {
+      cluster: import.meta.env.REACT_APP_PUSHER_CLUSTER || "ap2",
+      authEndpoint: import.meta.env.REACT_APP_PUSHER_AUTHENDPOINT,
     });
 
     // Pusher.default.logToConsole = true;

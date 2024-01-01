@@ -5,7 +5,7 @@ import { useSetUiSettings } from "../AppData/useUISettings";
 import { useWhenAloneInRoom } from "../../common/hooks";
 import { UI_SETTINGS } from "../../common/constants";
 
-const ambientMusicURL = process.env.REACT_APP_AMBIENT_MUSIC;
+const ambientMusicURL = import.meta.env.REACT_APP_AMBIENT_MUSIC;
 /**
  * @type HTMLAudioElement
  */

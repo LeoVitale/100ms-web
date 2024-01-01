@@ -73,7 +73,7 @@ export class Transcriber {
       return;
     }
     try {
-      let url = process.env.REACT_APP_DYNAMIC_STT_TOKEN_GENERATION_ENDPOINT;
+      let url = import.meta.env.REACT_APP_DYNAMIC_STT_TOKEN_GENERATION_ENDPOINT;
       let res = await fetch(url);
       let body = await res.json();
       const authToken = body.token;

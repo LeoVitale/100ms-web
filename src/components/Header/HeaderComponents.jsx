@@ -13,6 +13,8 @@ import {
   textEllipsis,
   useTheme,
 } from "@100mslive/roomkit-react";
+import logoDark from "../../images/logo-dark.svg";
+import logoLight from "../../images/logo-light.svg";
 import { useLogo } from "../AppData/useUISettings";
 import { isStreamingKit } from "../../common/utils";
 
@@ -62,12 +64,7 @@ export const Logo = () => {
   }
   return (
     <LogoImg
-      src={
-        logo ||
-        (themeType === "dark"
-          ? require("../../images/logo-light.svg")
-          : require("../../images/logo-dark.svg"))
-      }
+      src={logo || (themeType === "dark" ? logoLight : logoDark)}
       alt="Brand Logo"
       width={132}
       height={40}

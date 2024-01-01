@@ -93,6 +93,7 @@ const PreviewJoin = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token, skipPreview]);
+
   return (
     <Container>
       <Text
