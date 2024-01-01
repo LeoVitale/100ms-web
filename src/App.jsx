@@ -1,11 +1,5 @@
 import React, { Suspense, useEffect } from "react";
-import {
-  Navigate,
-  Route,
-  Routes,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { Navigate, Route, Routes, useParams } from "react-router-dom";
 import {
   HMSRoomProvider,
   selectIsConnectedToRoom,
@@ -231,7 +225,6 @@ const BackSwipe = () => {
 };
 
 function AppRoutes({ getDetails, authTokenByRoomCodeEndpoint }) {
-  const navigate = useNavigate();
   return (
     <>
       <ToastContainer />
